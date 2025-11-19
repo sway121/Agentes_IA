@@ -84,7 +84,7 @@ AgentOS es el "sistema operativo" que gestiona todos los agentes. Se encarga de:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      Cliente/Usuario                         │
+│                      Cliente/Usuario                        │
 └───────────────────────┬─────────────────────────────────────┘
                         │
                         ▼
