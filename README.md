@@ -89,24 +89,24 @@ AgentOS es el "sistema operativo" que gestiona todos los agentes. Se encarga de:
                         │
                         ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                    AgentUI (Frontend)                        │
-│              Interfaz visual Next.js/TypeScript              │
+│                    AgentUI (Frontend)                       │
+│              Interfaz visual Next.js/TypeScript             │
 └───────────────────────┬─────────────────────────────────────┘
                         │
                         ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                    AgentOS (Backend)                         │
+│                    AgentOS (Backend)                        │
 │  ┌──────────────────────────────────────────────────────┐   │
 │  │              SalesTeam (Team Coordinador)            │   │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌───────────┐ │   │
-│  │  │ SalesAgent   │  │ ProductAgent │  │OrderAgent │ │   │
-│  │  │ (Coordinador)│  │ (Productos)  │  │ (Pedidos) │ │   │
-│  │  └──────┬───────┘  └──────┬───────┘  └─────┬─────┘ │   │
-│  └─────────┼──────────────────┼────────────────┼───────┘   │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌───────────┐   │   │
+│  │  │ SalesAgent   │  │ ProductAgent │  │OrderAgent │   │   │
+│  │  │ (Coordinador)│  │ (Productos)  │  │ (Pedidos) │   │   │
+│  │  └──────┬───────┘  └──────┬───────┘  └─────┬─────┘   │   │
+│  └─────────┼──────────────────┼────────────────┼───────-┘   │
 │            │                  │                │            │
 │            ▼                  ▼                ▼            │
 │  ┌──────────────────────────────────────────────────────┐   │
-│  │              Herramientas (Tools)                     │   │
+│  │              Herramientas (Tools)                    │   │
 │  │  • buscar_productos()  • calcular_total_pedido()     │   │
 │  │  • validar_datos_envio() • generar_link_pago()       │   │
 │  └──────────────────────────────────────────────────────┘   │
