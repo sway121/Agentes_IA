@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesar Pago - Sistema de Ventas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .payment-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .order-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .order-info h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .order-details {
+            margin-bottom: 15px;
+        }
+        
+        .order-details p {
+            color: #555;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .order-details strong {
+            color: #333;
+        }
+        
+        .total {
+            border-top: 2px solid #ddd;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        .total p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .payment-form {
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            color: #667eea;
+            margin-top: 10px;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="header">
+            <h1>💳 Procesar Pago</h1>
+            <p>Complete los datos para finalizar su compra</p>
+        </div>
+        
+        <div class="order-info">
+            <h2>Resumen del Pedido</h2>
+            <div class="order-details" id="orderDetails">
+                <p><span>Pedido ID:</span> <strong id="orderId">-</strong></p>
+                <p><span>Total:</span> <strong id="orderTotal">$0.00</strong></p>
+            </div>
+        </div>
+        
+        <form class="payment-form" id="paymentForm">
+            <div class="form-group">
+                <label for="cardNumber">Número de Tarjeta</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="cardName">Nombre en la Tarjeta</label>
+                <input type="text" id="cardName" placeholder="Juan Pérez" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="expiryDate">Fecha de Vencimiento</label>
+                    <input type="text" id="expiryDate" placeholder="MM/AA" maxlength="5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="123" maxlength="3" required>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn">Pagar Ahora</button>
+            <div class="loading" id="loading">Procesando pago...</div>
+        </form>
+        
+        <div class="success-message" id="successMessage">
+            ✅ ¡Pago procesado exitosamente! Su pedido ha sido confirmado.
+        </div>
+    </div>
+    
+    <script>
+        // Obtener order_id de la URL
+        // El order_id viene en la ruta: /payment/{order_id}
+        // Ejemplo: http://localhost:7777/payment/ORD-ABC12345
+        let orderId = 'N/A';
+        const pathParts = window.location.pathname.split('/').filter(part => part);
+        
+        // Buscar 'payment' en la ruta y tomar el siguiente elemento
+        const paymentIndex = pathParts.indexOf('payment');
+        if (paymentIndex !== -1 && paymentIndex + 1 < pathParts.length) {
+            orderId = pathParts[paymentIndex + 1];
+        } else if (pathParts.length > 0) {
+            // Si no hay 'payment', tomar el último elemento
+            orderId = pathParts[pathParts.length - 1];
+        }
+        
+        // Mostrar order_id en la página
+        document.getElementById('orderId').textContent = orderId;
+        
+        // Formatear número de tarjeta
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+        
+        // Formatear fecha de vencimiento
+        document.getElementById('expiryDate').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+        
+        // Solo números para CVV
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+        
+        // Manejar envío del formulario
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
+            const btn = document.querySelector('.btn');
+            
+            loading.classList.add('show');
+            btn.disabled = true;
+            
+            // Simular procesamiento de pago
+            setTimeout(() => {
+                loading.classList.remove('show');
+                successMessage.classList.add('show');
+                btn.style.display = 'none';
+                
+                // Opcional: redirigir después de unos segundos
+                setTimeout(() => {
+                    // window.location.href = '/';
+                }, 3000);
+            }, 2000);
+        });
+        
+        // Intentar obtener información del pedido desde la API
+        if (orderId && orderId !== 'payment' && orderId !== 'N/A') {
+            // Intentar obtener desde la API
+            fetch(`/api/order/${orderId}`)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Pedido no encontrado');
+                })
+                .then(data => {
+                    // Actualizar el total
+                    if (data.total !== undefined && data.total !== null) {
+                        const total = parseFloat(data.total);
+                        if (!isNaN(total)) {
+                            document.getElementById('orderTotal').textContent = `$${total.toFixed(2)}`;
+                        }
+                    }
+                    
+                    // Si hay items, mostrarlos
+                    if (data.items && Array.isArray(data.items) && data.items.length > 0) {
+                        const itemsHtml = data.items.map(item => {
+                            const nombre = item.nombre || 'Producto';
+                            const precio = item.precio || item.precio_unitario || 0;
+                            const cantidad = item.cantidad || 1;
+                            const subtotal = precio * cantidad;
+                            return `<p><span>${nombre}</span> <strong>$${parseFloat(precio).toFixed(2)} x ${cantidad} = $${subtotal.toFixed(2)}</strong></p>`;
+                        }).join('');
+                        document.querySelector('.order-details').innerHTML += itemsHtml;
+                    }
+                })
+                .catch(err => {
+                    console.log('No se pudo cargar información del pedido desde la API:', err);
+                    // Si no se puede cargar, mostrar mensaje
+                    document.getElementById('orderTotal').textContent = 'No disponible';
+                });
+        } else {
+            // Si no hay order_id válido, mostrar mensaje
+            document.getElementById('orderTotal').textContent = 'No disponible';
+        }
+    </script>
+</body>
+</html>
+
+

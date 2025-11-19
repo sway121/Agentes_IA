@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop Dell XPS 15",
+    "description": "Laptop de alto rendimiento con procesador Intel i7, 16GB RAM, 512GB SSD",
+    "price": 1299.99,
+    "category": "Electrónica",
+    "stock": 15,
+    "image": "https://via.placeholder.com/300x200?text=Laptop+Dell"
+  },
+  {
+    "id": 2,
+    "name": "iPhone 15 Pro",
+    "description": "Smartphone Apple con pantalla Super Retina XDR, 256GB de almacenamiento",
+    "price": 999.99,
+    "category": "Electrónica",
+    "stock": 25,
+    "image": "https://via.placeholder.com/300x200?text=iPhone+15"
+  },
+  {
+    "id": 3,
+    "name": "Auriculares Sony WH-1000XM5",
+    "description": "Auriculares inalámbricos con cancelación de ruido activa y batería de 30 horas",
+    "price": 399.99,
+    "category": "Audio",
+    "stock": 30,
+    "image": "https://via.placeholder.com/300x200?text=Sony+Headphones"
+  },
+  {
+    "id": 4,
+    "name": "Monitor LG UltraWide 34\"",
+    "description": "Monitor curvo 4K UltraWide con tecnología IPS y HDR10",
+    "price": 599.99,
+    "category": "Electrónica",
+    "stock": 12,
+    "image": "https://via.placeholder.com/300x200?text=LG+Monitor"
+  },
+  {
+    "id": 5,
+    "name": "Teclado Mecánico Logitech MX",
+    "description": "Teclado mecánico inalámbrico con retroiluminación RGB y switches táctiles",
+    "price": 149.99,
+    "category": "Periféricos",
+    "stock": 40,
+    "image": "https://via.placeholder.com/300x200?text=Logitech+Keyboard"
+  },
+  {
+    "id": 6,
+    "name": "Mouse Logitech MX Master 3",
+    "description": "Mouse inalámbrico ergonómico con sensor de alta precisión y batería de 70 días",
+    "price": 99.99,
+    "category": "Periféricos",
+    "stock": 50,
+    "image": "https://via.placeholder.com/300x200?text=Logitech+Mouse"
+  },
+  {
+    "id": 7,
+    "name": "Tablet iPad Air",
+    "description": "Tablet Apple con chip M2, pantalla Liquid Retina de 10.9 pulgadas, 256GB",
+    "price": 749.99,
+    "category": "Electrónica",
+    "stock": 20,
+    "image": "https://via.placeholder.com/300x200?text=iPad+Air"
+  },
+  {
+    "id": 8,
+    "name": "Smartwatch Apple Watch Series 9",
+    "description": "Reloj inteligente con GPS, monitor de salud y batería de 18 horas",
+    "price": 429.99,
+    "category": "Wearables",
+    "stock": 35,
+    "image": "https://via.placeholder.com/300x200?text=Apple+Watch"
+  }
+]
+
+
